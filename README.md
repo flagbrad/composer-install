@@ -39,7 +39,7 @@ the [Setup PHP](https://github.com/shivammathur/setup-php) action as a step.
 - uses: "shivammathur/setup-php@v2"
   with:
     php-version: "latest"
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
 ```
 
 :bulb: There is no need to set up a separate caching step since ramsey/composer-install
@@ -66,7 +66,7 @@ Valid values are:
 For example:
 
 ```yaml
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
   with:
     dependency-versions: "lowest"
 ```
@@ -80,7 +80,7 @@ options, you may use the `composer-options` input parameter.
 For example:
 
 ```yaml
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
   with:
     composer-options: "--ignore-platform-reqs --optimize-autoloader"
 ```
@@ -93,7 +93,7 @@ located in `packages/acme-foo/`, use `working-directory` to tell
 ramsey/composer-install where to run things.
 
 ```yaml
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
   with:
     working-directory: "packages/acme-foo"
 ```
@@ -105,15 +105,15 @@ For example:
 
 ```yaml
 # Install dependencies using composer.json in the root.
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
 
 # Install dependencies using composer.json in src/Component/Config/
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
   with:
     working-directory: "src/Component/Config"
 
 # Install dependencies using composer.json in src/Component/Validator/
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
   with:
     working-directory: "src/Component/Validator"
 ```
@@ -129,7 +129,7 @@ any other value, the action will use the default behavior, which is to read from
 and store to the cache.
 
 ```yaml
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
   with:
     ignore-cache: "yes"
 ```
@@ -143,7 +143,7 @@ will not use the auto-generated cache key, so if your `composer.json` or
 wish to update the cache.
 
 ```yaml
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
   with:
     custom-cache-key: "my-custom-cache-key"
 ```
@@ -167,7 +167,7 @@ even more specific, you can specify a suffix to be added to the cache key via th
 # Adds a suffix to the cache key which is equivalent to the full date-time
 # of "last Monday 00:00", which means that the cache will be force refreshed
 # via the first workflow which is run every Monday.
-- uses: "ramsey/composer-install@v2"
+- uses: "ramsey/composer-install@v3"
   with:
     custom-cache-suffix: $(/bin/date -u --date='last Mon' "+%F")
 ```
@@ -214,7 +214,7 @@ steps:
   - uses: "shivammathur/setup-php@v2"
     with:
       php-version: "${{ matrix.php }}"
-  - uses: "ramsey/composer-install@v2"
+  - uses: "ramsey/composer-install@v3"
     with:
       dependency-versions: "${{ matrix.dependencies }}"
       composer-options: "${{ matrix.composer-options }}"
